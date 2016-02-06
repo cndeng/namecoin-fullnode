@@ -1,6 +1,4 @@
 # Installing Namecoin #Fullnode
-#### This is mashup of instructions:
-[Raspnode](http://raspnode.com/diyBitcoin.html) 
 
 #### You will need:
 1. 8Gb Micro SD Card (preferably Class 10 or above with wear protection)
@@ -8,7 +6,9 @@
 
 #### Insert Micro SD Card & Open up Terminal/Putty on Windows
 
-#### Follow the bitcoin fullnode setup instruction until the "Install the dependencies".  We need some extra dependancies
+#### Follow the bitcoin [https://github.com/MrChrisJ/fullnode]fullnode setup instruction until the "Install the dependencies".  
+
+## We need some extra dependancies for namecoin
 
 #### Instal the dependencies
 ```
