@@ -3,6 +3,8 @@ Setting up a Namecoin Fullnode on a Raspberry Pi 2
 
 This project was forked from ![Bitcoin Fullnode](https://github.com/MrChrisJ/fullnode/)
 
+Please see the setup.md file in this repo for the instructions
+
 # Motivation
 The goal of this project is to learn and layout a simple process for someone to be able to build a Namecoin Fullnode using nothing but low cost, open source available tools.
 
