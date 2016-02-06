@@ -112,6 +112,7 @@ listen=1
 server=1
 daemon=1
 txindex=1
+namehistory=1
 testnet=0
 dbcache=50
 rpcuser=rpcuser
