@@ -60,7 +60,7 @@ cd ~/bin
 git clone https://github.com/namecoin/namecoin-core.git
 ```  
 ```
-cd bitcoin/
+cd namecoin-core/
 ```  
 ```
 ./autogen
