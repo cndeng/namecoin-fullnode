@@ -1,55 +1,19 @@
-# Installing the Bitcoin #Fullnode to turn it in to a Freedom Machine
-#### This is mashup of two instructions:
-[Raspnode](http://raspnode.com/diyBitcoin.html) & [Tutorials & Technicalities - Compile Bitcoin Core on Raspberry Pi](http://blog.pryds.eu/2014/06/compile-bitcoin-core-on-raspberry-pi.html)
+# Installing Namecoin #Fullnode
+#### This is mashup of instructions:
+[Raspnode](http://raspnode.com/diyBitcoin.html) 
 
 #### You will need:
 1. 8Gb Micro SD Card (preferably Class 10 or above with wear protection)
-2. Download Raspian Wheezy https://www.raspberrypi.org/downloads/raspbian / or your favourite distro
+2. Download Raspian Jessie https://www.raspberrypi.org/downloads/raspbian / or your favourite distro
 
 #### Insert Micro SD Card & Open up Terminal/Putty on Windows
 
-#### List disks
-```
-diskutil list
-````
-
-##### Be carefull to select the correct disk OR YOU COULD LOSE DATA! If your SD Card is /dev/disk2 for example then:
-```
-diskutil umountDisk /dev/disk2
-```  
-```
-sudo dd if=2015-05-05-raspbian-wheezy.img of=/dev/disk2 bs=4096 conv=noerror,sync
-```   
-
-This will take some time.  
-Next take the micro SD out of the adapter and over to the Raspberry Pi 2 and connect it up to monitor and screen  
-On first boot it will load up the raspi-config console. If this is not your first time then load it using the commmand:
-```
-sudo raspi-config
-```
-Select:  
-1. Expand File System - click OK
-2. Enable SSH
-3. Change hostname to eg "fullnode" (without quotes)  
-4. Reboot either via the config 
-
-If you want you can reboot manually like so:
-```
-sudo reboot
-```
-#### Installing Updates
-
-```
-sudo apt-get update
-```  
-```
-sudo apt-get upgrade -y
-```  
-The -y flag tells the OS to answer "yes" to any prompts warning you of extra disk space required, we use this for convenience but it is not essential.  
+#### Follow the bitcoin fullnode setup instruction until the "Install the dependencies".  We need some extra dependancies
 
 #### Instal the dependencies
 ```
-sudo apt-get install build-essential autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-test-dev libboost-thread-dev libtool -y
+sudo apt-get install build-essential autoconf libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev libminiupnpc-dev -y
+
 ```
 
 #### Dependencies for Graphical User Interface (GUI) QT Wallet
@@ -88,12 +52,12 @@ make -j4
 sudo make install
 ```  
 
-#### Installing Bitcoin 0.11.2
+#### Installing Namecoin-core
 ```
 cd ~/bin
 ```   
 ```
-git clone -b v0.11.2 https://github.com/bitcoin/bitcoin.git
+git clone https://github.com/namecoin/namecoin-core.git
 ```  
 ```
 cd bitcoin/
@@ -102,7 +66,7 @@ cd bitcoin/
 ./autogen
 ```  
 ```
-./configure CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include -O2" LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib" --enable-upnp-default --with-gui
+./configure CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include -O2" LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib" --with-gui=qt4
 ```
 
 ```
@@ -113,15 +77,15 @@ sudo make install
 ```  
 
 You can delete ~/bin folder after the compiling.  
-Once Bitcoin is installed you will need to create a .bitcoin folder inside of your home directory. This is really on necessary if you want to use Bitcoin Command Line Interface or run it headlessly. If you do simply enter:  
+Once Namecoin is installed you will need to create a .namecoin folder inside of your home directory. This is really on necessary if you want to use Bitcoin Command Line Interface or run it headlessly. If you do simply enter:  
 ```
-mkdir /home/pi/.bitcoin/
+mkdir /home/pi/.namecoin/
 ```   
 ```
-cd /home/pi/.bitcoin
+cd /home/pi/.namecoin
 ```  
 ```
-nano bitcoin.conf
+nano namecoin.conf
 ```  
 This will open a blank text editor. Enter the following text as a minimum:
 ```
@@ -129,6 +93,7 @@ listen=1
 server=1
 daemon=1
 testnet=0
+dbcache=50
 rpcuser=rpcuser
 rpcpassword=changme_and_make_me_secure
 ```
@@ -156,4 +121,4 @@ cd ipfs
 sudo mv ipfs /usr/local/bin/ipfs
 ```
 
-## And that's all there is to it. You now have your Bitcoin #Fullnode. Enjoy your Freedom!
+## And that's all there is to it. You now have your Namecoin #Fullnode. Enjoy your Freedom!
