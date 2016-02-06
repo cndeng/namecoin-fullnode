@@ -117,9 +117,11 @@ txindex=1
 namehistory=1
 testnet=0
 dbcache=50
-rpcuser=rpcuser
+rpcuser=namecoinrpcuser
 rpcpassword=changme_and_make_me_secure
 rpcallowip=127.0.0.1
+rpcport=8335
+
 ```
 Press ```cntr+X``` followed by ```Y``` then ```Enter``` to save changes and return back to the command line.
 
@@ -154,4 +156,35 @@ python ~/PyBitmessage/src/bitmessagemain.py &
 
 You now have your Namecoin #Fullnode. 
 
+## Additional Tweaks
+
+To prevent terminals from blanking
+```  
+sudo nano /etc/kbd/config
+```  
+Locate these options and change to these values:
+```  
+BLANK_TIME=0
+POWERDOWN_TIME=0
+```  
+
+It is also advisable to add a firewall to your configuration.  Namecoin uses port 8334 by default and we have assigned port 8335 for rpc so install the firewall and configure to deny by default and to then allow SSH:
+```  
+sudo apt-get install ufw
+```  
+Then configure as follows:
+```  
+sudo ufw default deny incoming
+sudo ufw allow ssh/tcp
+sudo ufw limit ssh/tcp
+sudo ufw enable
+sudo reboot
+```  
+Then open the two additional namecoin ports 
+```  
+sudo ufw allow 8334/tcp
+sudo ufw allow 8335/tcp
+```  
+
 ## Enjoy your Freedom!
+ 
