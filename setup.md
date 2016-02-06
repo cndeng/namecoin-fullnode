@@ -6,7 +6,7 @@
 
 #### Insert Micro SD Card & Open up Terminal/Putty on Windows
 
-#### Follow the bitcoin [https://github.com/MrChrisJ/fullnode]fullnode setup instruction until the "Install the dependencies".  
+#### Follow the bitcoin fullnode [https://github.com/MrChrisJ/fullnode] setup instruction until the "Install the dependencies".  
 
 ## We need some extra dependancies for namecoin
 
