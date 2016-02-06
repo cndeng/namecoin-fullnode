@@ -1,5 +1,5 @@
 # Namecoin #Fullnode
-Setting up a Namecoing Fullnode on a Raspberry Pi 2
+Setting up a Namecoin Fullnode on a Raspberry Pi 2
 
 This project was forked from ![Bitcoin Fullnode](https://github.com/MrChrisJ/fullnode/)
 
