@@ -8,6 +8,6 @@ The goal of this project is to learn and layout a simple process for someone to 
 
 The main focus will be on educating and inspiring a new generation of people to begin hosting namecoin fullnodes to help decentralise the network and to encourage enthusiasts to become janitors of the blockchain.
 
-Namecoin #Fullnode is very simular to the Bitcoin #Fullnode, as in you end up with a fullnode however in this case you will be running on the namecoin blockchain..
+Namecoin #Fullnode is very simular to the Bitcoin #Fullnode, as in you end up with a fullnode however in this case you will be running the namecoin blockchain.
 
 NOTE: The namecoin blockchain is a lot smaller than bitcoins so it is not necessary to use an external data drive although you are of course welcome to.
