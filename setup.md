@@ -146,7 +146,11 @@ sudo apt-get install icedove
 
 Iceweael and Icedove will have icons in the GUI, to launch Bitmessage (in a terminal from the desktop)
 ```  
-python ~/PyBitmessage/src/bitmessagemain.py
+python ~/PyBitmessage/src/bitmessagemain.py &
 ```  
 
-## And that's all there is to it. You now have your Namecoin #Fullnode. Enjoy your Freedom!
+## And that's all there is to it. 
+
+You now have your Namecoin #Fullnode. 
+
+## Enjoy your Freedom!
