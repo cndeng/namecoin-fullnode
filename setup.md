@@ -133,9 +133,6 @@ We are going to install some other apps that are useful. Firstly we need a Pytho
 sudo apt-get install python-qt4
 ```
 ```
-sudo apt-get install python-qt4
-```
-```
 git clone https://github.com/Bitmessage/PyBitmessage ~/PyBitmessage
 ```
 ```
