@@ -112,6 +112,7 @@ This will open a blank text editor. Enter the following text as a minimum:
 listen=1
 server=1
 daemon=1
+txindex=1
 testnet=0
 dbcache=50
 rpcuser=rpcuser
@@ -123,6 +124,7 @@ Press ```cntr+X``` followed by ```Y``` then ```Enter``` to save changes and retu
 ## Starting Namecoin
 
 To start namecoin use either ```namecoind &``` or from within a terminal from the desktop for the GUI ```namecoin-qt &``` as appropriate.
+
 
 ## Installing the other apps
 
