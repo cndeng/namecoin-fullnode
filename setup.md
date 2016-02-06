@@ -27,7 +27,9 @@ sudo apt-get update
 sudo apt-get upgrade -y
 ```  
 The -y flag tells the OS to answer "yes" to any prompts warning you of extra disk space required, we use this for convenience but it is not essential.  
-
+```
+sudo reboot
+```
 
 #### Install the dependencies for Namecoin
 ```
