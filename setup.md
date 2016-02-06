@@ -100,7 +100,12 @@ rpcpassword=changme_and_make_me_secure
 Press ```cntr+X``` followed by ```Y``` then ```Enter``` to save changes and return back to the command line.
 
 ## Installing the other apps
-
+```
+sudo apt-get install python-qt4
+```
+```
+git clone https://github.com/Bitmessage/PyBitmessage ~/PyBitmessage
+```
 ```
 sudo apt-get install iceweasel
 ```  
@@ -109,6 +114,11 @@ sudo apt-get install tor
 ```  
 ```
 sudo apt-get install openvpn resolvconf
+```  
+
+To launch Bitmessage (in a terminal from the desktop)
+```  
+python ~/PyBitmessage/src/bitmessagemain.py
 ```  
 
 #### To install IPFS go to [https://ipfs.io/docs/install/](https://ipfs.io/docs/install/)
