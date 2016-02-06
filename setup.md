@@ -1,14 +1,12 @@
-# Installing Namecoin #Fullnode
+# Building a Namecoin #Fullnode
 
 #### You will need:
 1. 8Gb Micro SD Card (preferably Class 10 or above with wear protection)
-2. Download Raspian Jessie https://www.raspberrypi.org/downloads/raspbian / or your favourite distro
+2. Raspian Jessie https://www.raspberrypi.org/downloads/raspbian / or your favourite distro
 
-#### Insert Micro SD Card & Open up Terminal/Putty on Windows
+#### Follow the bitcoin #fullnode https://github.com/MrChrisJ/fullnode setup instruction until the "Install the dependencies".  
 
-#### Follow the bitcoin fullnode [https://github.com/MrChrisJ/fullnode] setup instruction until the "Install the dependencies".  
-
-## We need some extra dependancies for namecoin
+## We need an extra dependancy for namecoin
 
 #### Install the dependencies
 ```
@@ -100,6 +98,8 @@ rpcpassword=changme_and_make_me_secure
 Press ```cntr+X``` followed by ```Y``` then ```Enter``` to save changes and return back to the command line.
 
 ## Installing the other apps
+
+We are going to install some other apps that are useful. Firstly we need a Python update and then we can install Bitmessage, Iceweasel, and Icedove
 ```
 sudo apt-get install python-qt4
 ```
@@ -110,13 +110,16 @@ git clone https://github.com/Bitmessage/PyBitmessage ~/PyBitmessage
 sudo apt-get install iceweasel
 ```  
 ```
+sudo apt-get install icedove
+```  
+```
 sudo apt-get install tor
 ```  
 ```
 sudo apt-get install openvpn resolvconf
 ```  
 
-To launch Bitmessage (in a terminal from the desktop)
+Iceweael and Icedove will have icons in the GUI, to launch Bitmessage (in a terminal from the desktop)
 ```  
 python ~/PyBitmessage/src/bitmessagemain.py
 ```  
