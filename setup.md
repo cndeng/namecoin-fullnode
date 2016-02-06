@@ -122,11 +122,12 @@ Press ```cntr+X``` followed by ```Y``` then ```Enter``` to save changes and retu
 
 ## Starting Namecoin
 
-To start namecoin use either "namecoind" or "namecoin-qt" as appropriate.
+To start namecoin use either ```namecoind &``` or from within a terminal from the desktop for the GUI ```namecoin-qt &``` as appropriate.
 
 ## Installing the other apps
 
 We are going to install some other apps that are useful. Firstly we need a Python update and then we can install Bitmessage, plus a fully featured browser Iceweasel and email client Icedove.
+
 ```
 sudo apt-get install python-qt4
 ```
