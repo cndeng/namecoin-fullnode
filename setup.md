@@ -1,7 +1,7 @@
 # Building a Namecoin #Fullnode
 
 #### You will need:
-1. 8Gb Micro SD Card (preferably Class 10 or above with wear protection)
+1. 16Gb Micro SD Card or Larger (preferably Class 10 or above with wear protection)
 2. Raspian Jessie https://www.raspberrypi.org/downloads/raspbian / or your favourite distro
 
 #### Follow the bitcoin #fullnode https://github.com/MrChrisJ/fullnode setup instruction until the "Install the dependencies".  
