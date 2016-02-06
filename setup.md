@@ -4,7 +4,7 @@
 1. 16Gb Micro SD Card or Larger (preferably Class 10 or above with wear protection)
 2. Raspian Jessie https://www.raspberrypi.org/downloads/raspbian / or your favourite distro
 
-If this is not your first time then:
+Write the Jessie .img file to the SD Card using your preferred method then after booting for the first time at the command line:
 ```
 sudo raspi-config
 ```
@@ -13,14 +13,13 @@ Select:
 2. Configure your internationalisation options
 3. Ensure SSH is Enabled
 4. Change hostname to eg "nmcpi" (without quotes)
-5. Reboot either via the config 
-
-If you want you can reboot manually like so:
+5. Reboot either via the config or manually like so:
 ```
 sudo reboot
 ```
 #### Installing Updates
 
+Now the Raspeberry Pi is fully configured again in the command line:
 ```
 sudo apt-get update
 ```  
@@ -30,7 +29,7 @@ sudo apt-get upgrade -y
 The -y flag tells the OS to answer "yes" to any prompts warning you of extra disk space required, we use this for convenience but it is not essential.  
 
 
-#### Install the dependencies
+#### Install the dependencies for Namecoin
 ```
 sudo apt-get install build-essential autoconf libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev libminiupnpc-dev -y
 
@@ -97,7 +96,7 @@ sudo make install
 ```  
 
 You can delete ~/bin folder after the compiling.  
-Once Namecoin is installed you will need to create a .namecoin folder inside of your home directory. This is really on necessary if you want to use Namecoin Command Line Interface or run it headlessly. If you do simply enter:  
+Once Namecoin is installed you will need to create a .namecoin folder inside of your home directory so we can ensure it is configured as we would like it to be:  
 ```
 mkdir /home/pi/.namecoin/
 ```   
@@ -123,7 +122,7 @@ Press ```cntr+X``` followed by ```Y``` then ```Enter``` to save changes and retu
 
 ## Starting Namecoin
 
-To start namecoin use either ```namecoind &``` or from within a terminal from the desktop for the GUI ```namecoin-qt &``` as appropriate.
+To start namecoin use either ```namecoind &``` or from within a terminal from the desktop (for the GUI) ```namecoin-qt &``` as appropriate.
 
 
 ## Installing the other apps
