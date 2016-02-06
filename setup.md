@@ -37,12 +37,12 @@ sudo apt-get install build-essential autoconf libtool autotools-dev automake pkg
 
 ```
 
-#### Dependencies for Graphical User Interface (GUI) QT Wallet
+#### Install the dependencies for the Graphical User Interface (GUI) QT Wallet
 ```
 sudo apt-get install libqt4-dev qt4-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev -y
 ```
 
-#### Create a folder where we will install the files
+#### Create a folder where we will work with install the files
 ```
 mkdir ~/bin
 ```  
@@ -62,7 +62,7 @@ cd db-4.8.30.NC/build_unix/
 ```  
 
 #### Configuring the system and installing Berkeley DB  
-#### the -j4 flag installs using all four cores on the Raspberry Pi  
+##### the -j4 flag installs using all four cores on the Raspberry Pi  
 ```
 ../dist/configure --enable-cxx
 ```  
@@ -89,7 +89,7 @@ cd namecoin-core/
 ```
 ./configure CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include -O2" LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib" --with-gui=qt4
 ```
-
+We only use 2 cores for this part to prevent errors
 ```
 make -j2
 ``` 
@@ -97,8 +97,13 @@ make -j2
 sudo make install
 ```  
 
-You can delete ~/bin folder after the compiling.  
-Once Namecoin is installed you will need to create a .namecoin folder inside of your home directory so we can ensure it is configured as we would like it to be:  
+You can delete ~/bin folder after the compiling.
+```
+cd ..
+cd ..
+sudo rm -R ~/bin
+```  
+Once Namecoin is installed you will need to create a .namecoin folder inside of your home directory so we can ensure it is configured as we would like it to be with a full index of transactions and name history:  
 ```
 mkdir /home/pi/.namecoin/
 ```   
@@ -121,18 +126,40 @@ rpcuser=namecoinrpcuser
 rpcpassword=changme_and_make_me_secure
 rpcallowip=127.0.0.1
 rpcport=8335
-
 ```
-Press ```cntr+X``` followed by ```Y``` then ```Enter``` to save changes and return back to the command line.
+Press ```ctrl+X``` followed by ```Y``` then ```Enter``` to save changes and return back to the command line.
 
-## Starting Namecoin
+### Starting Namecoin
 
 To start namecoin use either ```namecoind &``` or from within a terminal from the desktop (for the GUI) ```namecoin-qt &``` as appropriate.
 
+If you would like namecoind to start automatically also update your startup configuration as follows:
+```
+sudo nano /etc/rc.local
+```
+and then above the last line ```exit 0 ``` place the following
+```
+su pi -c 'namecoind &'
+```
 
-## Installing the other apps
+Reboot the system and expect to wait a while ...
+```
+sudo reboot
+```
 
-We are going to install some other apps that are useful. Firstly we need a Python update and then we can install Bitmessage, plus a fully featured browser Iceweasel and email client Icedove.
+
+### And that's all there is to it. 
+
+You now have your Namecoin #Fullnode but keep reading as we have some additional tricks and tweaks below
+
+To view the status of your node use the following command
+```
+namecoin-cli getblockchaininfo
+```
+
+### Installing Other Apps
+
+We are going to install some other apps that are useful now that we have access to the Namecoin blockchain. Firstly we need a Python update and then we can install Bitmessage, plus we may as well install a fully featured browser *Iceweasel* and an email client *Icedove*.
 
 ```
 sudo apt-get install python-qt4
@@ -146,15 +173,11 @@ sudo apt-get install iceweasel
 ```
 sudo apt-get install icedove
 ```  
-
-Iceweael and Icedove will have icons in the GUI, to launch Bitmessage (in a terminal from the desktop)
+Iceweael and Icedove will have icons in the GUI, to launch Bitmessage (From a terminal on the desktop)
 ```  
 python ~/PyBitmessage/src/bitmessagemain.py &
 ```  
 
-## And that's all there is to it. 
-
-You now have your Namecoin #Fullnode. 
 
 ## Additional Tweaks
 
@@ -178,13 +201,12 @@ sudo ufw default deny incoming
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw enable
-sudo reboot
 ```  
 Then open the two additional namecoin ports 
 ```  
 sudo ufw allow 8334/tcp
 sudo ufw allow 8335/tcp
+sudo reboot
 ```  
 
 ## Enjoy your Freedom!
- 
