@@ -10,7 +10,7 @@
 
 ## We need some extra dependancies for namecoin
 
-#### Instal the dependencies
+#### Install the dependencies
 ```
 sudo apt-get install build-essential autoconf libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev libminiupnpc-dev -y
 
