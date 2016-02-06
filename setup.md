@@ -4,9 +4,31 @@
 1. 16Gb Micro SD Card or Larger (preferably Class 10 or above with wear protection)
 2. Raspian Jessie https://www.raspberrypi.org/downloads/raspbian / or your favourite distro
 
-#### Follow the bitcoin #fullnode https://github.com/MrChrisJ/fullnode setup instruction until the "Install the dependencies".  
+If this is not your first time then:
+```
+sudo raspi-config
+```
+Select:  
+1. Expand File System - click OK
+2. Configure your internationalisation options
+3. Ensure SSH is Enabled
+4. Change hostname to eg "nmcpi" (without quotes)
+5. Reboot either via the config 
 
-## We need an extra dependancy for namecoin
+If you want you can reboot manually like so:
+```
+sudo reboot
+```
+#### Installing Updates
+
+```
+sudo apt-get update
+```  
+```
+sudo apt-get upgrade -y
+```  
+The -y flag tells the OS to answer "yes" to any prompts warning you of extra disk space required, we use this for convenience but it is not essential.  
+
 
 #### Install the dependencies
 ```
@@ -94,12 +116,20 @@ testnet=0
 dbcache=50
 rpcuser=rpcuser
 rpcpassword=changme_and_make_me_secure
+rpcallowip=127.0.0.1
 ```
 Press ```cntr+X``` followed by ```Y``` then ```Enter``` to save changes and return back to the command line.
 
+## Starting Namecoin
+
+To start namecoin use either "namecoind" or "namecoin-qt" as appropriate.
+
 ## Installing the other apps
 
-We are going to install some other apps that are useful. Firstly we need a Python update and then we can install Bitmessage, Iceweasel, and Icedove
+We are going to install some other apps that are useful. Firstly we need a Python update and then we can install Bitmessage, plus a fully featured browser Iceweasel and email client Icedove.
+```
+sudo apt-get install python-qt4
+```
 ```
 sudo apt-get install python-qt4
 ```
@@ -112,26 +142,10 @@ sudo apt-get install iceweasel
 ```
 sudo apt-get install icedove
 ```  
-```
-sudo apt-get install tor
-```  
-```
-sudo apt-get install openvpn resolvconf
-```  
 
 Iceweael and Icedove will have icons in the GUI, to launch Bitmessage (in a terminal from the desktop)
 ```  
 python ~/PyBitmessage/src/bitmessagemain.py
 ```  
-
-#### To install IPFS go to [https://ipfs.io/docs/install/](https://ipfs.io/docs/install/)
-Download the Linux ARM version [https://gobuilder.me/get/github.com/ipfs/go-ipfs/cmd/ipfs/ipfs_master_linux-arm.zip](https://gobuilder.me/get/github.com/ipfs/go-ipfs/cmd/ipfs/ipfs_master_linux-arm.zip)
-#### Then in terminal...
-```
-cd ipfs
-```  
-```
-sudo mv ipfs /usr/local/bin/ipfs
-```
 
 ## And that's all there is to it. You now have your Namecoin #Fullnode. Enjoy your Freedom!
