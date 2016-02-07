@@ -1,10 +1,12 @@
 # Building a Namecoin #Fullnode
 
-#### You will need:
+### You will need:
 1. 16Gb Micro SD Card or Larger (preferably Class 10 or above with wear protection)
 2. Raspian Jessie https://www.raspberrypi.org/downloads/raspbian / or your favourite distro
 
-Write the Jessie .img file to the SD Card using your preferred method then after booting for the first time at the command line:
+Write the Jessie .img file to the SD Card using your preferred method. 
+
+### Then boot for the first time and at the command line:
 ```
 sudo raspi-config
 ```
@@ -16,13 +18,14 @@ Select:
 * [5] Ensure SSH is Enabled
 * [6] Advanced Options - Change hostname to something appropriate e.g. "nmcpi" (without quotes)
 * [7] Advanced Options - Memory Split - Set to *16* for headless/server or *128* for gui/desktop.
-Reboot either via the config or manually like so:
+
+#### Reboot either via the config or manually like so:
 ```
 sudo reboot
 ```
 #### Installing Updates
 
-Now the Raspeberry Pi is fully configured again in the command line:
+Now the Raspeberry Pi is fully configured we need to ensure it is upto date, again in the command line:
 ```
 sudo apt-get update
 ```  
@@ -45,7 +48,7 @@ sudo apt-get install build-essential autoconf libtool autotools-dev automake pkg
 sudo apt-get install libqt4-dev qt4-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev -y
 ```
 
-#### Create a folder where we will work with install the files
+#### Create a folder where we will work with installation the files
 ```
 mkdir ~/bin
 ```  
@@ -53,7 +56,7 @@ mkdir ~/bin
 cd ~/bin
 ```
 
-#### Install the Berkeley DB 4.8
+#### Download, Unpack, Configure and Install the Berkeley DB 4.8
 ```
 wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 ```  
@@ -63,12 +66,10 @@ tar -xzvf db-4.8.30.NC.tar.gz
 ```
 cd db-4.8.30.NC/build_unix/
 ```  
-
-#### Configuring the system and installing Berkeley DB  
-##### the -j4 flag installs using all four cores on the Raspberry Pi  
 ```
 ../dist/configure --enable-cxx
 ```  
+##### the -j4 flag uses all four cores on the Raspberry Pi for maximum speed.  
 ```
 make -j4
 ```  
@@ -92,31 +93,31 @@ cd namecoin-core/
 ```
 ./configure CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include -O2" LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib" --with-gui=qt4
 ```
-We only use 2 cores for this part to prevent errors
+##### For this make operation we only use 2 of the cores to prevent errors
 ```
 make -j2
 ``` 
 ```
 sudo make install
 ```  
-
-You can delete ~/bin folder after the compiling.
+Delete the ~/bin folder and all subfolders after the compiling and installing.  Assuming we are still in the ```namecoin-core``` folder
 ```
 cd ..
 cd ..
 sudo rm -R ~/bin
 ```  
-Once Namecoin is installed you will need to create a .namecoin folder inside of your home directory so we can ensure it is configured as we would like it to be with a full index of transactions and name history:  
+Now that Namecoin is installed create a .namecoin folder inside of your home directory so we can ensure that when run it is configured as we would like it to be, with a full index of transactions and name history:  
 ```
 mkdir /home/pi/.namecoin/
 ```   
 ```
 cd /home/pi/.namecoin
 ```  
+Open a blank text editor.
 ```
 nano namecoin.conf
 ```  
-This will open a blank text editor. Enter the following text as a minimum:
+Enter the following text as a minimum:
 ```
 listen=1
 server=1
@@ -132,24 +133,24 @@ rpcport=8335
 ```
 Press ```ctrl+X``` followed by ```Y``` then ```Enter``` to save changes and return back to the command line.
 
-### Starting Namecoin
+#### Starting Namecoin
 
 To start namecoin use either ```namecoind &``` or from within a terminal from the desktop (for the GUI) ```namecoin-qt &``` as appropriate.
 
-If you would like namecoind to start automatically also update your startup configuration as follows:
+If you would like namecoind to start automatically at boot update your startup configuration as follows:
 ```
 sudo nano /etc/rc.local
 ```
-and then above the last line ```exit 0 ``` place the following
+and then above the last line ```exit 0 ``` place the following line:
 ```
 su pi -c 'namecoind &'
 ```
 
-Reboot the system and expect to wait a while ...
+#### Reboot the system 
 ```
 sudo reboot
 ```
-
+##### Expect to wait a while for the namecoin blockchain to fully sync ...
 
 ### And that's all there is to it. 
 
@@ -162,7 +163,7 @@ namecoin-cli getblockchaininfo
 
 ### Installing Other Apps
 
-We are going to install some other apps that are useful now that we have access to the Namecoin blockchain. Firstly we need a Python update and then we can install Bitmessage, plus we may as well install a fully featured browser *Iceweasel* and an email client *Icedove*.
+We are going to install some other apps that are useful now that we have access to the Namecoin blockchain. Firstly we need a Python update and then we can install *Bitmessage*, plus we may as well install a fully featured browser *Iceweasel* and an email client *Icedove*.
 
 ```
 sudo apt-get install python-qt4
@@ -176,15 +177,16 @@ sudo apt-get install iceweasel
 ```
 sudo apt-get install icedove
 ```  
-Iceweael and Icedove will have icons in the GUI, to launch Bitmessage (From a terminal on the desktop)
+Iceweael and Icedove have launch icons in the menu within GUI, to launch Bitmessage (From a terminal on the desktop)
 ```  
 python ~/PyBitmessage/src/bitmessagemain.py &
 ```  
 
+### Additional Configuration Tweaks
 
-## Additional Tweaks
+Some additional tweaks we have found usefule are
 
-To prevent terminals from blanking
+#### To prevent terminals from blanking the following can be done:
 ```  
 sudo nano /etc/kbd/config
 ```  
@@ -194,21 +196,24 @@ BLANK_TIME=0
 POWERDOWN_TIME=0
 ```  
 
-It is also advisable to add a firewall to your configuration.  Namecoin uses port 8334 by default and we have assigned port 8335 for rpc so install the firewall and configure to deny by default and to then allow SSH:
+#### Firewall
+
+It is also advisable to add a firewall to your configuration.  Namecoin uses port 8334 by default and we have assigned port 8335 for RPC and Bitmessage uses port 8444.  So install the firewall and configure to deny incoming by default and to then allow SSH:
 ```  
 sudo apt-get install ufw
-```  
-Then configure as follows:
-```  
 sudo ufw default deny incoming
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
-sudo ufw enable
 ```  
-Then open the two additional namecoin ports 
+Then open the additional Namecoin and BitMessage ports 
 ```  
 sudo ufw allow 8334/tcp
 sudo ufw allow 8335/tcp
+sudo ufw allow 8444/tcp
+```  
+Finally enable the firewall and reboot
+```  
+sudo ufw enable
 sudo reboot
 ```  
 
