@@ -164,24 +164,86 @@ namecoin-cli getblockchaininfo
 
 ### Installing Other Apps
 
-We are going to install some other apps that are useful now that we have access to the Namecoin blockchain. Firstly we need a Python update and then we can install *Bitmessage*, plus we may as well install a fully featured browser *Iceweasel* and an email client *Icedove*.
+We are going to install some other apps that are useful now that we have access to the Namecoin blockchain. Firstly we need a few Python related files and then we can install *NMControl* and *Bitmessage*
 
 ```
 sudo apt-get install python-qt4
 ```
 ```
+sudo apt-get install python-pip
+```
+```
+sudo pip install bottle
+```
+
+#### NMControl gives you easy access to the .bit domain name system
+
+```
+git clone https://github.com/namecoin/nmcontrol/
+```
+Then we must make a configuration file as follows:
+
+```
+cd nmcontrol
+```
+```
+cd conf
+```
+Open a blank text editor.
+```
+nano service-dns.conf
+```
+Use the following text as a template NOTE it must include the , at the end but you are free to modify as required:
+```
+; service-dns.conf example
+
+[dns]
+; Launch at startup
+start=1
+
+; Listen on ip
+host=127.0.0.1
+
+; Disable lookups for standard domains
+disable_standard_lookups=0
+
+; Listen on port
+port=53
+
+; Forward standard requests to your standard DNS
+; There has to be a comma at the end!
+; e.g. lokal router ip: resolver=192.168.0.1,
+; e.g. Google DNS: resolver=8.8.8.8, 8.8.4.4,
+resolver=192.168.0.1,
+```
+
+##### To start NMControl from within the /nmcontrol directory in the command line use: 
+
+```
+sudo python ./nmcontrol.py
+```
+alternatively start in debug mode:
+```
+sudo python nmcontrol.py --daemon=0 --debug=1 start
+```
+
+#### Bitmessage.  Bitmessage can be configured to use NMControl.
+```
 git clone https://github.com/Bitmessage/PyBitmessage ~/PyBitmessage
 ```
+To launch Bitmessage, From a terminal on the desktop:
+```  
+python ~/PyBitmessage/src/bitmessagemain.py &
+```  
+
+#### Browser and Email client
 ```
 sudo apt-get install iceweasel
 ```  
 ```
 sudo apt-get install icedove
 ```  
-Iceweael and Icedove have launch icons in the menu within GUI, to launch Bitmessage (From a terminal on the desktop)
-```  
-python ~/PyBitmessage/src/bitmessagemain.py &
-```  
+Iceweael and Icedove have launch icons in the menu within GUI. 
 
 ### Additional Configuration Tweaks
 
@@ -215,7 +277,7 @@ sudo /etc/init.d/dphys-swapfile start
 
 #### Firewall
 
-It is also advisable to add a firewall to your configuration.  Namecoin uses port 8334 by default and we have assigned port 8335 for RPC and Bitmessage uses port 8444.  So install the firewall and configure to deny incoming by default and to then allow SSH:
+It is also advisable to add a firewall to your configuration.  Namecoin uses port 8334 by default and we have assigned port 8335 for RPC and Bitmessage uses port 8444.  So we install the firewall and configure to deny incoming by default and to then allow SSH but limit to prevent attacks:
 ```  
 sudo apt-get install ufw
 sudo ufw default deny incoming
@@ -227,6 +289,11 @@ Then open the additional Namecoin and BitMessage ports
 sudo ufw allow 8334/tcp
 sudo ufw allow 8335/tcp
 sudo ufw allow 8444/tcp
+```  
+Then open the DNS and NMControl Ports
+```  
+sudo ufw allow 53/tcp
+sudo ufw allow 9000/tcp
 ```  
 Finally enable the firewall and reboot
 ```  
