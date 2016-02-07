@@ -4,7 +4,7 @@
 1. 16Gb Micro SD Card or Larger (preferably Class 10 or above with wear protection)
 2. Raspian Jessie https://www.raspberrypi.org/downloads/raspbian / or your favourite distro
 
-Write the Jessie .img file to the SD Card using your preferred method. 
+Write the Jessie .img file to the SD Card using your preferred method.
 
 ### Then boot for the first time and at the command line:
 ```
@@ -15,9 +15,10 @@ Select:
 * [2] Change the pi users password to something secure
 * [3] Boot Options - set to preferred boot mode: command line or desktop as you wish.
 * [4] Internationalisation Options - set locale, timezone and keyboard as appropriate.
-* [5] Ensure SSH is Enabled
+* [5] Overclock - set to Pi 2 1000Mhz
 * [6] Advanced Options - Change hostname to something appropriate e.g. "nmcpi" (without quotes)
 * [7] Advanced Options - Memory Split - Set to *16* for headless/server or *128* for gui/desktop.
+* [8] Advanced Options - Ensure SSH is enabled.
 
 #### Reboot either via the config or manually like so:
 ```
