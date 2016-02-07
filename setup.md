@@ -12,12 +12,12 @@ sudo raspi-config
 ```
 Select:  
 * [1] Expand File System - Click OK
-* [2] Change the pi users password to something secure
-* [3] Boot Options - set to preferred boot mode: command line or desktop as you wish.
-* [4] Internationalisation Options - set locale, timezone and keyboard as appropriate.
-* [5] Overclock - set to Pi 2 1000Mhz
+* [2] Change the *pi* users password to something secure
+* [3] Boot Options - Set to preferred boot mode: command line or desktop as you wish.
+* [4] Internationalisation Options - Set locale, timezone and keyboard as appropriate.
+* [5] Overclock - Set to Pi 2 1000Mhz
 * [6] Advanced Options - Change hostname to something appropriate e.g. "nmcpi" (without quotes)
-* [7] Advanced Options - Memory Split - Set to *16* for headless/server or *128* for gui/desktop.
+* [7] Advanced Options - Memory Split - We suggest *16* for headless/server or *128* for gui/desktop.
 * [8] Advanced Options - Ensure SSH is enabled.
 
 #### Reboot either via the config or manually like so:
@@ -185,7 +185,7 @@ python ~/PyBitmessage/src/bitmessagemain.py &
 
 ### Additional Configuration Tweaks
 
-Some additional tweaks we have found usefule are
+Some additional tweaks we have found useful are
 
 #### To prevent terminals from blanking the following can be done:
 ```  
@@ -195,6 +195,22 @@ Locate these options and change to these values:
 ```  
 BLANK_TIME=0
 POWERDOWN_TIME=0
+```  
+Press ```ctrl+X``` followed by ```Y``` then ```Enter``` to save changes and return back to the command line.
+
+#### The size of the swap file can easily be modified by using:
+```  
+sudo nano /etc/dphys-swapfile
+```  
+and then editing the value e.g. 
+```  
+CONF_SWAPSIZE=1024
+```  
+Press ```ctrl+X``` followed by ```Y``` then ```Enter``` to save changes and return back to the command line. Then run the following commands to initialse the changes
+```  
+sudo dphys-swapfile setup
+sudo /etc/init.d/dphys-swapfile stop
+sudo /etc/init.d/dphys-swapfile start
 ```  
 
 #### Firewall
