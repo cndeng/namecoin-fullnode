@@ -9,11 +9,14 @@ Write the Jessie .img file to the SD Card using your preferred method then after
 sudo raspi-config
 ```
 Select:  
-1. Expand File System - click OK
-2. Configure your internationalisation options
-3. Ensure SSH is Enabled
-4. Change hostname to eg "nmcpi" (without quotes)
-5. Reboot either via the config or manually like so:
+* [1] Expand File System - Click OK
+* [2] Change the pi users password to something secure
+* [3] Boot Options - set to preferred boot mode: command line or desktop as you wish.
+* [4] Internationalisation Options - set locale, timezone and keyboard as appropriate.
+* [5] Ensure SSH is Enabled
+* [6] Advanced Options - Change hostname to something appropriate e.g. "nmcpi" (without quotes)
+* [7] Advanced Options - Memory Split - Set to *16* for headless/server or *128* for gui/desktop.
+Reboot either via the config or manually like so:
 ```
 sudo reboot
 ```
