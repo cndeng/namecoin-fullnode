@@ -162,7 +162,7 @@ To view the status of your node use the following command
 namecoin-cli getblockchaininfo
 ```
 
-### Installing Other Apps
+### Additional Applications
 
 We are going to install some other apps that are useful now that we have access to the Namecoin blockchain. Firstly we need a few Python related files and then we can install *NMControl* and *Bitmessage*
 
@@ -176,13 +176,11 @@ sudo apt-get install python-pip
 sudo pip install bottle
 ```
 
-#### NMControl gives you easy access to the .bit domain name system
-
+#### NMControl - gives you easy access to the .bit domain name system
 ```
 git clone https://github.com/namecoin/nmcontrol/
 ```
 Then we must make a configuration file as follows:
-
 ```
 cd nmcontrol
 ```
@@ -216,9 +214,9 @@ port=53
 ; e.g. Google DNS: resolver=8.8.8.8, 8.8.4.4,
 resolver=192.168.0.1,
 ```
+Please note NMControl is alpha software. We were unable to get the RESFUL API to work so will revist this as and when updates become available.
 
 ##### To start NMControl from within the /nmcontrol directory in the command line use: 
-
 ```
 sudo python ./nmcontrol.py
 ```
@@ -227,7 +225,7 @@ alternatively start in debug mode:
 sudo python nmcontrol.py --daemon=0 --debug=1 start
 ```
 
-#### Bitmessage.  Bitmessage can be configured to use NMControl.
+#### Bitmessage - Can be configured to use NMControl.
 ```
 git clone https://github.com/Bitmessage/PyBitmessage ~/PyBitmessage
 ```
@@ -235,15 +233,17 @@ To launch Bitmessage, From a terminal on the desktop:
 ```  
 python ~/PyBitmessage/src/bitmessagemain.py &
 ```  
+and then use Settings | Namecoin Integration and select NMControl then press ```test``` to verify.
 
-#### Browser and Email client
+
+#### Mozilla Browser and Email client
 ```
 sudo apt-get install iceweasel
 ```  
 ```
 sudo apt-get install icedove
 ```  
-Iceweael and Icedove have launch icons in the menu within GUI. 
+Both Iceweael and Icedove have launch icons that are found in the Menu | Internet section within GUI. 
 
 ### Additional Configuration Tweaks
 
