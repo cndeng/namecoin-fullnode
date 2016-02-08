@@ -89,7 +89,7 @@ git clone https://github.com/namecoin/namecoin-core.git
 cd namecoin-core/
 ```  
 ```
-./autogen
+./autogen.sh
 ```  
 ```
 ./configure CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include -O2" LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib" --with-gui=qt4
