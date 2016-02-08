@@ -214,7 +214,7 @@ port=53
 ; e.g. Google DNS: resolver=8.8.8.8, 8.8.4.4,
 resolver=192.168.0.1,
 ```
-Please note NMControl is alpha software. We were unable to get the RESFUL API to work so will revist this as and when updates become available.
+Please note NMControl is alpha software. We were unable to get the RESTFUL API to work so will revist this as and when updates become available.
 
 ##### To start NMControl from within the /nmcontrol directory in the command line use: 
 ```
@@ -233,7 +233,7 @@ To launch Bitmessage, From a terminal on the desktop:
 ```  
 python ~/PyBitmessage/src/bitmessagemain.py &
 ```  
-and then use Settings | Namecoin Integration and select NMControl then press ```test``` to verify.
+and then use Settings | Namecoin Integration and select NMControl then press ```Test``` to verify.
 
 
 #### Mozilla Browser and Email client
