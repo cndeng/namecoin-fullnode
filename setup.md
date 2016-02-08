@@ -151,7 +151,8 @@ su pi -c 'namecoind &'
 ```
 sudo reboot
 ```
-##### Expect to wait a while for the namecoin blockchain to fully sync ...
+##### Expect to wait a while for the namecoin blockchain to fully sync.
+The namecoin blockchain when fully indexded and with a full name history is around 4gb, it took a little under 48 hours to fully sync.
 
 ### And that's all there is to it. 
 
