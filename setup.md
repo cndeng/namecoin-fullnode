@@ -152,7 +152,7 @@ su pi -c 'namecoind &'
 sudo reboot
 ```
 ##### Expect to wait a while for the namecoin blockchain to fully sync.
-The namecoin blockchain when fully indexded and with a full name history is around 4gb, it took a little under 48 hours to fully sync.
+The namecoin blockchain when fully indexded and with a full name history is around 4Gb, it took a little under 48 hours to fully sync.
 
 ### And that's all there is to it. 
 
@@ -278,23 +278,20 @@ sudo /etc/init.d/dphys-swapfile start
 
 #### Firewall
 
-It is also advisable to add a firewall to your configuration.  Namecoin uses port 8334 by default and we have assigned port 8335 for RPC and Bitmessage uses port 8444.  So we install the firewall and configure to deny incoming by default and to then allow SSH but limit to prevent attacks:
+It is also advisable to add a firewall to your configuration.  Namecoin uses port 8334 by default and we have assigned port 8335 for RPC and Bitmessage uses port 8444.  NMControl runs on port 9000 and the standard port for DNS is 53.  So we install the firewall and configure it to deny incoming connections by default and to then allow SSH but limit to prevent attacks:
 ```  
 sudo apt-get install ufw
 sudo ufw default deny incoming
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 ```  
-Then open the additional Namecoin and BitMessage ports 
+Then we open the additional Namecoin, BitMessage, NMControl and DNS ports 
 ```  
 sudo ufw allow 8334/tcp
 sudo ufw allow 8335/tcp
 sudo ufw allow 8444/tcp
-```  
-Then open the DNS and NMControl Ports
-```  
-sudo ufw allow 53/tcp
 sudo ufw allow 9000/tcp
+sudo ufw allow 53/tcp
 ```  
 Finally enable the firewall and reboot
 ```  
