@@ -215,7 +215,7 @@ port=53
 ; e.g. Google DNS: resolver=8.8.8.8, 8.8.4.4,
 resolver=192.168.0.1,
 ```
-Please note NMControl is alpha software. We were unable to get the RESTFUL API to work so will revist this as and when updates become available.
+Please note NMControl is alpha software. We were unable to get the RESTFUL API to work over HTTP so will revist this as and when updates become available.
 
 ##### To start NMControl from within the /nmcontrol directory in the command line use: 
 ```
