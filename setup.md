@@ -225,6 +225,7 @@ alternatively start in debug mode:
 ```
 sudo python nmcontrol.py --daemon=0 --debug=1 start
 ```
+We have provided an example rc.local file in this repo that starts both Namecoin and NMControl. 
 
 #### Bitmessage - Can be configured to use NMControl.
 ```
